@@ -11,8 +11,8 @@
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚕️</text></svg>">
-    
     <link rel="stylesheet" href="./style.css">
+    
 </head>
 <body>
     <header>
@@ -91,7 +91,7 @@
                 <div class="about-content">
                     <div class="about-text fade-in">
                         <h2>About Sunrise Medical Center</h2>
-                        <p>Located in Sebrepor near Michel Camp, Sunrise Medical Center is dedicated to providing quality healthcare services to our community. We combine modern medical technology with compassionate care to ensure the best outcomes for our patients.</p>
+                        <p>Located in Sapeiman Camp, Sunrise Medical Center is dedicated to providing quality healthcare services to our community. We combine modern medical technology with compassionate care to ensure the best outcomes for our patients.</p>
                         <p>Our experienced team of healthcare professionals is committed to maintaining the highest standards of medical care while ensuring a comfortable and welcoming environment for all patients.</p>
                     </div>
                     <div class="stats fade-in">
@@ -154,7 +154,7 @@
                             <div class="contact-icon">📍</div>
                             <div>
                                 <h3>Location</h3>
-                                <p>Sebrepor, Michel Camp<br>Tema-Akosombo Road, Ghana</p>
+                                <p>Sapeiman Camp<br>Accra, Ghana</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -318,16 +318,37 @@
             observer.observe(el);
         });
 
-        // Service Card Hover Effect
+        // Service Card Hover Effect for Desktop and Mobile
         const serviceCards = document.querySelectorAll('.service-card');
         serviceCards.forEach(card => {
+            // For mouse-based devices
             card.addEventListener('mouseenter', () => {
                 card.classList.add('service-card-hovered');
             });
             card.addEventListener('mouseleave', () => {
                 card.classList.remove('service-card-hovered');
             });
+            // For touch-based devices
+            card.addEventListener('touchstart', (e) => {
+                card.classList.add('service-card-hovered');
+            }, {passive: true});
+            card.addEventListener('touchend', () => {
+                card.classList.remove('service-card-hovered');
+            });
         });
+
+        // Add touch support for other hover effects
+        function addTouchHoverSupport(selector, hoverClass) {
+            document.querySelectorAll(selector).forEach(item => {
+                item.addEventListener('touchstart', () => item.classList.add(hoverClass), {passive: true});
+                item.addEventListener('touchend', () => item.classList.remove(hoverClass));
+                item.addEventListener('touchcancel', () => item.classList.remove(hoverClass));
+            });
+        }
+        
+        addTouchHoverSupport('.stat-item', 'touched');
+        addTouchHoverSupport('.contact-item', 'touched');
+        addTouchHoverSupport('.carousel-item', 'touched');
 
         // Testimonial Carousel logic
         const carouselWrapper = document.querySelector('.carousel-wrapper');
