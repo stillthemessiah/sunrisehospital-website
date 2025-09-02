@@ -340,7 +340,7 @@
             cursor: pointer;
         }
         
-        .stat-item:hover {
+        .stat-item:hover, .stat-item.touched {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             background: var(--container-hover-bg);
@@ -396,7 +396,7 @@
             transform: scale(1);
         }
 
-        .testimonial-carousel:hover .carousel-item.active {
+        .carousel-item.active:hover, .carousel-item.active.touched {
             background: var(--container-hover-bg);
         }
 
@@ -504,7 +504,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .contact-item:hover {
+        .contact-item:hover, .contact-item.touched {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             background: var(--container-hover-bg);
